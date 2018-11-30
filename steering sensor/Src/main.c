@@ -76,7 +76,6 @@ for(uint32_t i=0;i<size_;i++)
 {
 	gray[size_-1-i]=graycode%10 ;
 	graycode/=10;
-	if(graycode==0) break;//no need to complete the loop
 
 }
 
