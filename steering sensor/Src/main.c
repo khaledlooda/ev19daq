@@ -53,7 +53,7 @@
  uint32_t g_flag=0;//to know that we have our bits that represent el reading completed shifted
  uint32_t g_complete_reading=0;//which will be sent to graytoDecimal function(contains complete gray code after shifting 10 bits)
  uint32_t g_mul=1;//to construct gray_code from bits shifted to micro_controller
-#define  max_no_of_bits 10
+#define  max_no_of_bits 10 // resolution of encoder
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -119,11 +119,11 @@ void shift_bit(uint16_t reading_bit)
     if(g_flag==max_no_of_bits)
     {
         //cout<<endl<<g_complete_reading; this is used for testing on codeBlocks
-        g_angle=graytoDecimal(g_complete_reading,max_no_of_bits)/pow(2,10);
+        g_angle=graytoDecimal(g_complete_reading,max_no_of_bits)/pow(2,max_no_of_bits);
         g_complete_reading=0;
         g_flag=0;
         g_mul=1;
-        g_angle*=10;
+        g_angle*=360;
         //cout<<endl<<g_angle;also for testing
     }
 }
